@@ -104,11 +104,11 @@ const errorMsg = document.getElementById('errMsg');
 }*/
 function validateInput(){
 if(inputVali.value = ''||inputVali.value.length < 8 ){
-  errorMsg.innerHTML = 'Must not be blank or less than 8 characters!'
-  inputVali.value = 'error, please enter reuqired format'
+  errorMsg.innerHTML = 'Must not be blank or less than 8 characters.'
+  inputVali.value = 'Error! Not submitted.'
 }else{
   errorMsg.innerHTML = ''
-  inputVali.value = ''
+  inputVali.value = 'Submitted'
 }
 }
 //Call the event
@@ -137,6 +137,8 @@ const myDog = {
   breed: 'Beaglier',
   color: 'Blenheim',
   hometown: 'Baradine',
+  favoriteFood: 'Bones',
+  occupation:'Best Boi',
   age: 4,
 }
 //Selectors
@@ -147,11 +149,19 @@ const displayArea = document.getElementById('displayCard')
       //if statement
   }*/
 function displayCard (){
-
-    let myString = JSON.stringify(myDog);
-    displayArea.innerHTML = myString;
-    displayArea.style.overflow= 'scroll'
+  const cardContent = document.createElement('p')
+  cardContent.innerHTML =
+ `Name : ${myDog.name}<br>
+  Breed : ${myDog.breed}<br>
+  Color : ${myDog.color}<br>
+  Hometown : ${myDog.hometown}<br>
+  Favorite Food: ${myDog.favoriteFood}<br>
+  Occupation: ${myDog.occupation}<br>
+  Age : ${myDog.age} Human Years<br>`
+  displayArea.appendChild(cardContent);
+  cardBtn.removeEventListener('click', displayCard);
   }
+
   cardBtn.addEventListener('click', displayCard)
 
   
