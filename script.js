@@ -52,34 +52,26 @@ const greenLight = document.getElementById('goDiv')
 //Function 1
 function redLightOn(){
   redLight.style.background = 'red'
+  yellowLight.style.background = 'black'
+  greenLight.style.background = 'black'
 }
-function redightOff(){
-  redLight.style.background = 'black'
-}
- 
 //Function 2
 function yellowLightOn(){
   yellowLight.style.background = 'yellow'
-}
-function yellowLightOff(){
-  yellowLight.style.background = 'black'
+  redLight.style.background = 'black'
+  greenLight.style.background = 'black'
 }
 //Function 3
 function greenLightOn(){
   greenLight.style.background = 'lime'
-}
-function greenLightOff(){
-  greenLight.style.background = 'black'
+  redLight.style.background = 'black'
+  yellowLight.style.background = 'black'
 }
 //Call the events
-stopBtn.addEventListener('mousedown', redLightOn)
-stopBtn.addEventListener('mouseup', redightOff)
+stopBtn.addEventListener('click', redLightOn)
+readyBtn.addEventListener('click', yellowLightOn)
+goBtn.addEventListener('click', greenLightOn)
 
-readyBtn.addEventListener('mousedown', yellowLightOn)
-readyBtn.addEventListener('mouseup', yellowLightOff)
-
-goBtn.addEventListener('mousedown', greenLightOn)
-goBtn.addEventListener('mouseup', greenLightOff)
 
 //5. Change textbox border colours
 //Selectors
@@ -104,11 +96,13 @@ const errorMsg = document.getElementById('errMsg');
 }*/
 function validateInput(){
 if(inputVali.value = ''||inputVali.value.length < 8 ){
-  errorMsg.innerHTML = 'Must not be blank or less than 8 characters.'
+  errorMsg.innerHTML = '*Must not be blank or less than 8 characters.'
+  errorMsg.style.color = 'red'
   inputVali.value = 'Error! Not submitted.'
 }else{
-  errorMsg.innerHTML = ''
-  inputVali.value = 'Submitted'
+  errorMsg.innerHTML = 'Submitted'
+  errorMsg.style.color = 'lime'
+  inputVali.value = ''
 }
 }
 //Call the event
@@ -159,7 +153,7 @@ function displayCard (){
   Occupation: ${myDog.occupation}<br>
   Age : ${myDog.age} Human Years<br>`
   displayArea.appendChild(cardContent);
-  cardBtn.removeEventListener('click', displayCard);
+  cardBtn.removeEventListener('click', displayCard)
   }
 
   cardBtn.addEventListener('click', displayCard)
